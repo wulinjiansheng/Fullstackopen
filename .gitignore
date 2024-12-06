@@ -1,0 +1,13 @@
+# React Native
+node_modules/
+android/
+ios/
+.env
+*.log
+*.tmp
+
+# macOS
+.DS_Store
+
+# VS Code
+.vscode/
