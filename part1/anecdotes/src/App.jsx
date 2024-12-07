@@ -39,7 +39,14 @@ const AnecdoteMostVoted = ({ anecdotes, votes }) => {
 	return (
 		<>
 			<h1>Anecdote with most votes</h1>
-			<div>{anecdotes[maxIndex]}</div>
+			{maxVotes > 0 ? (
+				<>
+					<div>{anecdotes[maxIndex]}</div>
+					<div>has {votes[maxIndex]} votes</div>
+				</>
+			) : (
+				<div>Vote first</div>
+			)}
 		</>
 	);
 };
