@@ -14,9 +14,7 @@ export const PersonForm = ({ persons, setPersons, setMessage }) => {
 					return;
 				}
 
-				const existingPerson = persons.find(
-					(p) => p.name === newPerson.name
-				);
+				const existingPerson = persons.find((p) => p.name === newPerson.name);
 				if (existingPerson) {
 					const confirm = window.confirm(
 						`${newPerson.name} is already added to phonebook, ` +
@@ -29,9 +27,7 @@ export const PersonForm = ({ persons, setPersons, setMessage }) => {
 						.then((updatedPerson) => {
 							setPersons(
 								persons.map((p) =>
-									p.id === updatedPerson.id
-										? updatedPerson
-										: p
+									p.id === updatedPerson.id ? updatedPerson : p
 								)
 							);
 							setNewPerson({});
@@ -70,9 +66,7 @@ export const PersonForm = ({ persons, setPersons, setMessage }) => {
 				name:{" "}
 				<input
 					value={newPerson.name ?? ""}
-					onChange={(e) =>
-						setNewPerson({ ...newPerson, name: e.target.value })
-					}
+					onChange={(e) => setNewPerson({ ...newPerson, name: e.target.value })}
 				/>
 			</div>
 			<div>

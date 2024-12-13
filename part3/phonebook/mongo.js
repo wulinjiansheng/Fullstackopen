@@ -28,7 +28,7 @@ if (name && number) {
 		number,
 	});
 
-	phoneBook.save().then((result) => {
+	phoneBook.save().then(() => {
 		console.log("phoneBook saved: phoneBook");
 		mongoose.connection.close();
 	});

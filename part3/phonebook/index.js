@@ -19,7 +19,7 @@ app.use((req, res, next) => {
 	}
 });
 
-morgan.token("body", function (req, res) {
+morgan.token("body", function (req) {
 	return JSON.stringify(req.body);
 });
 
@@ -30,11 +30,11 @@ app.post(
 	)
 );
 
-const unknownEndpoint = (request, response) => {
+const unknownEndpoint = (_, response) => {
 	response.status(404).send({ error: "unknown endpoint" });
 };
 
-app.get("/api/persons", (request, response) =>
+app.get("/api/persons", (_, response) =>
 	Person.find({}).then((persons) => {
 		response.json(persons);
 	})
@@ -53,7 +53,7 @@ app.get("/api/persons/:id", (request, response, next) => {
 		.catch((error) => next(error));
 });
 
-app.delete("/api/persons/:id", (request, response) => {
+app.delete("/api/persons/:id", (request, response, next) => {
 	const id = request.params.id;
 	Person.findByIdAndDelete(id)
 		.then((deletedPerson) => {
@@ -62,8 +62,8 @@ app.delete("/api/persons/:id", (request, response) => {
 		.catch((error) => next(error));
 });
 
-app.get("/api/info", (request, response) => {
-	Phonebook.find({}).then((persons) => {
+app.get("/api/info", (_, response) => {
+	Person.find({}).then((persons) => {
 		const info = `
 			<div>Phonebook has info for ${persons.length} people</div>
 			<br/>
