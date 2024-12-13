@@ -1,12 +1,6 @@
 import PhonebookService from "../service/PhonebookService";
 
-export const Persons = ({
-	persons,
-	setPersons,
-	filter,
-	setSuccessMessage,
-	setErrorMessage,
-}) => {
+export const Persons = ({ persons, setPersons, filter, setMessage }) => {
 	const regex = new RegExp(filter, "i");
 	return (
 		<div>
@@ -31,14 +25,16 @@ export const Persons = ({
 												(p) => p.id != deletedPerson.id
 											)
 										);
-										setSuccessMessage(
-											`${deletedPerson.name} was deleted from server`
-										);
+										setMessage({
+											isError: false,
+											content: `${deletedPerson.name} was deleted from server`,
+										});
 									})
 									.catch(() =>
-										setErrorMessage(
-											`${person.name} has already been removed from server`
-										)
+										setMessage({
+											isError: true,
+											content: `${person.name} has already been removed from server`,
+										})
 									);
 							}}
 						>

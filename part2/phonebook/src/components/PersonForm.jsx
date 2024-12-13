@@ -1,12 +1,7 @@
 import { useState } from "react";
 import PhonebookService from "../service/PhonebookService";
 
-export const PersonForm = ({
-	persons,
-	setPersons,
-	setSuccessMessage,
-	setErrorMessage,
-}) => {
+export const PersonForm = ({ persons, setPersons, setMessage }) => {
 	const [newPerson, setNewPerson] = useState({});
 
 	return (
@@ -30,30 +25,45 @@ export const PersonForm = ({
 					if (!confirm) {
 						return;
 					}
-					PhonebookService.updatePerson(
-						existingPerson.id,
-						newPerson
-					).then((updatedPerson) => {
-						setPersons(
-							persons.map((p) =>
-								p.id === updatedPerson.id ? updatedPerson : p
-							)
+					PhonebookService.updatePerson(existingPerson.id, newPerson)
+						.then((updatedPerson) => {
+							setPersons(
+								persons.map((p) =>
+									p.id === updatedPerson.id
+										? updatedPerson
+										: p
+								)
+							);
+							setNewPerson({});
+							setMessage({
+								isError: false,
+								content: `${updatedPerson.name} number was updated`,
+							});
+						})
+						.catch((error) =>
+							setMessage({
+								isError: true,
+								content: error.message,
+							})
 						);
-						setNewPerson({});
-						setSuccessMessage(
-							`${updatedPerson.name} number was updated`
-						);
-					});
 					return;
 				}
 
-				PhonebookService.addPerson(newPerson).then((addedPerson) => {
-					setPersons([...persons, addedPerson]);
-					setNewPerson({});
-					setSuccessMessage(
-						`${addedPerson.name} was added to server`
+				PhonebookService.addPerson(newPerson)
+					.then((addedPerson) => {
+						setPersons([...persons, addedPerson]);
+						setNewPerson({});
+						setMessage({
+							isError: false,
+							content: `${addedPerson.name} was added to server`,
+						});
+					})
+					.catch((error) =>
+						setMessage({
+							isError: true,
+							content: error.message,
+						})
 					);
-				});
 			}}
 		>
 			<div>
