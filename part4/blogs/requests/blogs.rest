@@ -8,15 +8,16 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imp1Z
 
 
 ###
-PUT  http://localhost:3003/api/blogs/678fad066ca4d36da6d85465
+PUT  http://localhost:3003/api/blogs/679b4b11d0bc11ff41b1ff68
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImJvemhhIiwiaWQiOiI2NzhmODZhM2M1ODkzZTQxOGM3N2VlNTEiLCJpYXQiOjE3Mzc0NjcyMTYsImV4cCI6MTczNzQ3MDgxNn0.eNxfIOKkTAPfL-8T0m0jqsurkq1emVL88zCCudp_vEQ
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImJvemhhIiwiaWQiOiI2NzhmODZhM2M1ODkzZTQxOGM3N2VlNTEiLCJpYXQiOjE3MzgyMzI5NDUsImV4cCI6MTczODIzNjU0NX0.X9hNqd3TkH_7hc4gn14g2M7Zxg-SO2Bseg_BZ_k6F40
 
 {
-    "title": "Test 2",
-    "author": "bozha 123",
-    "url": "thjksaf",
-    "likes": 10
+  "title": "Final;",
+  "author": "214",
+  "url": "5125",
+  "likes": 12,
+  "id": "679b4b11d0bc11ff41b1ff68"
 }
 
 ###
